@@ -1,11 +1,5 @@
 ﻿@model IEnumerable<MossadAgentsMVC.Models.Mission>
 
-@{
-    ViewData["Title"] = "Missions";
-}
-
-<h1>Missions</h1>
-
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -13,13 +7,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Agent nickname
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Agent.coordinates)
+            </th>
+            <th>
+                Target name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Target.coordinates)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Distance)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ExecutionTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActualExecutionTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -31,13 +34,24 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                    @Html.DisplayFor(modelItem => item.Agent.nickname)
+            </td>
+            <td>
+                    <p>X: @Html.DisplayFor(modelItem => item.Agent.coordinates.X) Y:@Html.DisplayFor(modelItem => item.Agent.coordinates.Y)</p>
+                    
+            </td> 
+            <td>
+                    @Html.DisplayFor(modelItem => item.Target.name)
+            </td>
+            <td>
+                    <p>X: @Html.DisplayFor(modelItem => item.Target.coordinates.X) Y: @Html.DisplayFor(modelItem => item.Target.coordinates.Y)</p>
+                    
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Distance)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ExecutionTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActualExecutionTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
