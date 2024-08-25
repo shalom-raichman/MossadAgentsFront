@@ -2,7 +2,7 @@
 using MossadAgentsMVC.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace MossadAgentsAPI.Models
+namespace MossadAgentsMVC.Models
 {
     public class Target
     {
