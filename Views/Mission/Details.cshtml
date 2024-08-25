@@ -9,12 +9,48 @@
 <div>
     <h4>Mission</h4>
     <hr />
-    <dl class="row">
+    <dl class="table">
+        <dt class = "col-sm-2">
+            Mission id
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            Agent id
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Agent.id)
+        </dd>
+        <dt class = "col-sm-2">
+            Agent photo
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Agent.photo_url)
+        </dd>
+        <dt class = "col-sm-2">
+            Agent nickname
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Agent.nickname)
+        </dd>
         <dt class = "col-sm-2">
             Target id
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Target.Id)
+        </dd> 
+        <dt class = "col-sm-2">
+            Target name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Target.name)
+        </dd>
+        <dt class = "col-sm-2">
+            target id
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Target.position)
         </dd>
         <dt class = "col-sm-2">
             ExecutionTime
@@ -44,5 +80,5 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Missions">Back to List</a>
 </div>
