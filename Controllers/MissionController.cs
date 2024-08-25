@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MossadAgentsMVC.Models;
+using Newtonsoft.Json;
+using System.Text;
 using System.Text.Json;
 
 namespace MossadAgentsMVC.Controllers
@@ -18,10 +20,33 @@ namespace MossadAgentsMVC.Controllers
             return View(missions);
         }
 
-        // GET: MissionController/Details/5
-        public ActionResult Details(int id)
+        // PUT: MissionController/{id}/status
+        public async Task<ActionResult> SetMission(int id)
         {
-            return View();
+
+            var data = new
+            {
+                Name = "John Doe",
+                Age = 30
+            };
+
+            // Serialize the data object to a JSON string
+            var jsonData = JsonConvert.SerializeObject(data);
+
+            // Create a StringContent object to send as the request body, with the appropriate content type (here, JSON)
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            await _httpClient.PutAsync($"http://localhost:5217/api/Missiion/{id}/status", content);
+
+            return RedirectToAction("Missions");
+        }
+
+        // GET: MissionController/Details/5
+        [HttpGet]
+        public async Task<ActionResult> Details(int id)
+        {
+            var mission = await _httpClient.GetFromJsonAsync($"http://localhost:5217/api/Missiion/{id}", typeof(Mission));
+            return View(mission);
         }
 
         // GET: MissionController/Create
