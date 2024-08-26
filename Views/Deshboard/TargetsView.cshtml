@@ -25,6 +25,12 @@
                 @Html.DisplayNameFor(model => model.photoUrl)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.coordinates.X)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coordinates.Y)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th></th>
@@ -46,6 +52,12 @@
                 @Html.DisplayFor(modelItem => item.photoUrl)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.coordinates.X)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coordinates.Y)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
@@ -57,3 +69,7 @@
 }
     </tbody>
 </table>
+
+<meta http-equiv="refresh" content="3" />
+
+
