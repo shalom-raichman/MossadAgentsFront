@@ -23,11 +23,19 @@ namespace MossadAgentsMVC.Controllers
         // GET: MissionController
         public async Task<ActionResult>ProposeMissions()
         {
-            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Mission");
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missions");
 
             var proposeMissions = _missionServise.GetProposeMissions(missions);
 
             return View(proposeMissions);
+        }
+        
+        // GET: MissionController
+        public async Task<ActionResult>AllMissions()
+        {
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missions");
+
+            return View(missions);
         }
 
         // PUT: MissionController/{id}/status
@@ -46,16 +54,16 @@ namespace MossadAgentsMVC.Controllers
             // Create a StringContent object to send as the request body, with the appropriate content type (here, JSON)
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync($"http://localhost:5217/Mission/{id}/status", content);
+            await _httpClient.PutAsync($"http://localhost:5217/Missions/{id}/status", content);
 
-            return RedirectToAction("Missions");
+            return RedirectToAction("ProposeMissions");
         }
 
         // GET: MissionController/Details/5
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
-            var mission = await _httpClient.GetFromJsonAsync($"http://localhost:5217/Mission/{id}", typeof(Mission));
+            var mission = await _httpClient.GetFromJsonAsync($"http://localhost:5217/Missions/{id}", typeof(Mission));
             return View(mission);
         }
 

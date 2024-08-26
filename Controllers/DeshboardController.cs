@@ -29,7 +29,7 @@ namespace MossadAgentsMVC.Controllers
         {
             var agents = await _httpClient.GetFromJsonAsync<Agent[]>("http://localhost:5217/Agents");
             var targets = await _httpClient.GetFromJsonAsync<Target[]>("http://localhost:5217/Targets");
-            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Mission");
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missions");
 
             Deshboard deshboard = new Deshboard();
             deshboard.NumOfAgents = _agentsServise.GetNumOfAgents(agents);
