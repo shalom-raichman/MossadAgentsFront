@@ -1,7 +1,13 @@
+using MossadAgentsMVC.Servises;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<AgentsServise>();
+builder.Services.AddScoped<MissionServise>();
+builder.Services.AddScoped<TargetServise>();
 
 var app = builder.Build();
 
