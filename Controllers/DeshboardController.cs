@@ -44,7 +44,7 @@ namespace MossadAgentsMVC.Controllers
             return View(deshboard);
         }
         
-        // GET: DeshboardController1
+        // GET: DeshboardController
         // agents status
         public async Task<ActionResult> AgentsView()
         {
@@ -53,6 +53,17 @@ namespace MossadAgentsMVC.Controllers
 
 
             return View(agents);
+        }
+        
+        // GET: DeshboardController
+        // targets status
+        public async Task<ActionResult> TargetsView()
+        {
+            var targets = await _httpClient.GetFromJsonAsync<Target[]>("http://localhost:5217/Targets");
+
+
+
+            return View(targets);
         }
 
         // GET: DeshboardController1/Details/5
