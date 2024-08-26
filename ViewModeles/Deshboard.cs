@@ -10,6 +10,7 @@ namespace MossadAgentsMVC.ViewModeles
         public int? NumOfDeadTargets { get; set; }
         public int? NumOfMissions { get; set; }
         public int? NumOfActiveMissions { get; set; }
+        public int? NumOfPrroposeMissions { get; set; }
 
     }
 }

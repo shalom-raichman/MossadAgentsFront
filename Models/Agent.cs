@@ -14,5 +14,6 @@ namespace MossadAgentsMVC.Models
         public string nickname { get; set; }
         public Coordinates coordinates { get; set; }
         public AgentStatus Status { get; set; }
+        public int? Kills { get; set; } = 0;
     }
 }

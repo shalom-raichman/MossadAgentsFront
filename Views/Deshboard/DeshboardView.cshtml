@@ -9,7 +9,7 @@
 <div>
     <h4>Deshboard</h4>
     <hr />
-    <dl class="table">
+    <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NumOfAgents)
         </dt>
@@ -45,6 +45,18 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NumOfActiveMissions)
+        </dd>
+        <dt class = "col-sm-2">
+            Agents / Targets
+        </dt>
+        <dd class = "col-sm-10">
+            <p>@Html.DisplayFor(model => model.NumOfAgents) / @Html.DisplayFor(model => model.NumOfTargets)</p>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumOfPrroposeMissions)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumOfPrroposeMissions)
         </dd>
     </dl>
 </div>

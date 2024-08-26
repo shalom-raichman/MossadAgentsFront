@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MossadAgentsMVC.Models;
+using MossadAgentsMVC.Servises;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.Json;
@@ -11,13 +12,22 @@ namespace MossadAgentsMVC.Controllers
     {
         private readonly HttpClient _httpClient = new HttpClient();
 
+        private readonly MissionServise _missionServise;
+
+        public MissionController(MissionServise missionServise)
+        {
+            _missionServise = missionServise;
+        }
+
 
         // GET: MissionController
-        public async Task<ActionResult> Missions()
+        public async Task<ActionResult>ProposeMissions()
         {
-            var missions = await _httpClient.GetFromJsonAsync("http://localhost:5217/Missiion", typeof(Mission[]));
-            //Mission[] missions = JsonSerializer.Deserialize<Mission[]>(missionJson);
-            return View(missions);
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missiion");
+
+            var proposeMissions = _missionServise.GetProposeMissions(missions);
+
+            return View(proposeMissions);
         }
 
         // PUT: MissionController/{id}/status

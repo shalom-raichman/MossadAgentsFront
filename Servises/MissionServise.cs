@@ -22,5 +22,31 @@ namespace MossadAgentsMVC.Servises
             }
             return count;
         }
+
+        public int GetnumOfProposeMissions(Mission[] missions) 
+        {
+            int count = 0;
+            foreach (var mission in missions)
+            {
+                if(mission.Status == MissionStatus.Proposal)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+        
+        public List<Mission> GetProposeMissions(Mission[] missions) 
+        {
+            List<Mission> list = new List<Mission>();
+            foreach (var mission in missions)
+            {
+                if(mission.Status == MissionStatus.Proposal)
+                {
+                    list.Add(mission);
+                }
+            }
+            return list;
+        }
     }
 }

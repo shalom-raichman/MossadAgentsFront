@@ -23,12 +23,13 @@ namespace MossadAgentsMVC.Controllers
             _missionServise = missionServise;
         }
 
-        // GET: DeshboardController1
-        public async Task<ActionResult> DeshboardView()
+        // GET: DeshboardController
+        // תצוגה כללית
+        public async Task<ActionResult> OverallView()
         {
             var agents = await _httpClient.GetFromJsonAsync<Agent[]>("http://localhost:5217/Agents");
             var targets = await _httpClient.GetFromJsonAsync<Target[]>("http://localhost:5217/Targets");
-            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missiion");
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Mission");
 
             Deshboard deshboard = new Deshboard();
             deshboard.NumOfAgents = _agentsServise.GetNumOfAgents(agents);
@@ -37,8 +38,21 @@ namespace MossadAgentsMVC.Controllers
             deshboard.NumOfDeadTargets = _targetServise.GetNumOfDeadtargets(targets);
             deshboard.NumOfMissions = _missionServise.GetNumOfMissions(missions);
             deshboard.NumOfActiveMissions = _missionServise.GetNumOfActiveMissions(missions);
+            deshboard.NumOfPrroposeMissions = _missionServise.GetnumOfProposeMissions(missions);
+
 
             return View(deshboard);
+        }
+        
+        // GET: DeshboardController1
+        // agents status
+        public async Task<ActionResult> AgentsView()
+        {
+            var agents = await _httpClient.GetFromJsonAsync<Agent[]>("http://localhost:5217/Agents");
+
+
+
+            return View(agents);
         }
 
         // GET: DeshboardController1/Details/5
