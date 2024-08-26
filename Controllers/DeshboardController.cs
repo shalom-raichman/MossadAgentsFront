@@ -26,14 +26,19 @@ namespace MossadAgentsMVC.Controllers
         // GET: DeshboardController1
         public async Task<ActionResult> DeshboardView()
         {
-            var agents = await _httpClient.GetFromJsonAsync("http://localhost:5217/Agents", typeof(Agent[]));
-            var targets = await _httpClient.GetFromJsonAsync("http://localhost:5217/Targets", typeof(Target[]));
-            var Missions = await _httpClient.GetFromJsonAsync("http://localhost:5217/Missions", typeof(Mission[]));
+            var agents = await _httpClient.GetFromJsonAsync<Agent[]>("http://localhost:5217/Agents");
+            var targets = await _httpClient.GetFromJsonAsync<Target[]>("http://localhost:5217/Targets");
+            var missions = await _httpClient.GetFromJsonAsync<Mission[]>("http://localhost:5217/Missiion");
 
-            
-            //Deshboard.NumOfAgents = _agentsServise.GetNumOfAgents(agents);
+            Deshboard deshboard = new Deshboard();
+            deshboard.NumOfAgents = _agentsServise.GetNumOfAgents(agents);
+            deshboard.NumOfActiveAgents = _agentsServise.NumOfActiveAgents(agents);
+            deshboard.NumOfTargets = _targetServise.GetNumOfTargets(targets);
+            deshboard.NumOfDeadTargets = _targetServise.GetNumOfDeadtargets(targets);
+            deshboard.NumOfMissions = _missionServise.GetNumOfMissions(missions);
+            deshboard.NumOfActiveMissions = _missionServise.GetNumOfActiveMissions(missions);
 
-            return View();
+            return View(deshboard);
         }
 
         // GET: DeshboardController1/Details/5

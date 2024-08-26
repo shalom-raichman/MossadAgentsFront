@@ -4,12 +4,12 @@ namespace MossadAgentsMVC.ViewModeles
 {
     public class Deshboard
     {
-        public static int? NumOfAgents { get; set; }
-        public static int? NumOfActiveAgents { get; set; }
-        public static int? NumOfTargets { get; set; }
-        public static int? NumOfDeadTargets { get; set; }
-        public static int? NumOfMissions { get; set; }
-        public static int? NumOfActiveMissions { get; set; }
+        public int? NumOfAgents { get; set; }
+        public int? NumOfActiveAgents { get; set; }
+        public int? NumOfTargets { get; set; }
+        public int? NumOfDeadTargets { get; set; }
+        public int? NumOfMissions { get; set; }
+        public int? NumOfActiveMissions { get; set; }
 
     }
 }
