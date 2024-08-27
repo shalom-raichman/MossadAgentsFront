@@ -11,6 +11,7 @@ namespace MossadAgentsMVC.Controllers
     {
 
         private HttpClient _httpClient = new HttpClient();
+
         private readonly AgentsServise _agentsServise;
         private readonly TargetServise _targetServise;
         private readonly MissionServise _missionServise;
@@ -50,8 +51,6 @@ namespace MossadAgentsMVC.Controllers
         {
             var agents = await _httpClient.GetFromJsonAsync<Agent[]>("http://localhost:5217/Agents");
 
-
-
             return View(agents);
         }
         
@@ -60,8 +59,6 @@ namespace MossadAgentsMVC.Controllers
         public async Task<ActionResult> TargetsView()
         {
             var targets = await _httpClient.GetFromJsonAsync<Target[]>("http://localhost:5217/Targets");
-
-
 
             return View(targets);
         }
